@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        'use strict';
+
+        var age = 3;
+        if (age > 3) {
+            alert("haha");
+        }else {
+            alert("kuwa~");
+        }
+    </script>
+</head>
+<body>
+    <script>
+        while (age > 2) {
+            age--;
+        }
+
+
+        //forEach循环
+        var age = [12,545,454,5,45,5,454];
+        age.forEach(function (value){
+            console.log(value)
+        });
+        //forin() 取下标
+        for (var index in age) {
+            console.log(index)
+        }
+        //forof() 取值     java 1.6出来的
+        for (var num of age) {
+            console.log(num)
+        }
+
+    </script>
+</body>
+</html>

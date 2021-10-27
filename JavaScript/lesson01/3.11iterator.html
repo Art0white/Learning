@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        //遍历数组
+        var arr = [3, 4, 5];
+        for (var x of arr) {
+            console.log(x);
+        }
+        //遍历Map
+        var map = new Map([["tom",100], ["jack",90], ["haha",80]]);
+        for (let x of map) {
+            console.log(x);
+        }
+        //遍历Set
+        var set = new Set([3, 4, 5]);
+        for(let x of set) {
+            console.log(x);
+        }
+    </script>
+</body>
+</html>

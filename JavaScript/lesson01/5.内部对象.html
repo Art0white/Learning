@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /**
+         * 5.1 Date
+         * 回忆：typeof可以查看数据类型
+         * var now = new Date();
+         * console,log(now);
+         * now.getFullYear();    //年
+         * now.getMonth();       //月     0~11
+         * now.getDate();        //日
+         * now.getDay();         //星期
+         * now.getHours();       //时
+         * now.getMinutes();     //分
+         * now.getSeconds();     //秒
+         *
+         * now.getTime();        //时间戳    1970.1.1. 08；00；00 开始到现在的毫秒数
+         *
+         * now.toGMTString();    //输出格式好看
+         */
+        var now = new Date();
+
+
+        /**
+         * 5.2 JSON
+         * json是一种轻量的数据交换格式。
+         * 它有简洁和清晰的层次结构使得JSON成为理想的数据交换语言。
+         * 早期，所有数据传输习惯使用XML文件
+         *      //BSON和JSON很像，用于MongoDB
+         *
+         * 在JavaScript一切皆为对象，任何js支持的类型都可以使用JSON来表示
+         * 格式：
+         *      对象都有{}
+         *      数组都有[]
+         *      所有的键值对都是key: value
+         *
+         */
+
+        var user = {
+            name: "haha",
+            age: 18,
+            sex: "男"
+        }
+
+        //对象转换成JSON字符串  JSON.stringify()
+        var jsonuser = JSON.stringify(user);
+
+        //JSON字符串转换为对象  JSON.parse() //单引号和双引号要错开，里面双引号了外面就要单引号，里面单引号外面双引号
+        var obj = JSON.parse('{"name":"haha","age":18,"sex":"男"}');
+
+        //JSON和JS对象的区别
+        var obj = {a:'hello',b:'hellob'};
+        var json = '{"a":"hello","b":"hellob"}';
+
+
+        /**
+         * 5.3 Ajax
+         * 原生的js写法，xhr异步请求
+         * jQuery封装好的方法$("#name").ajax("")
+         * axios 请求
+         */
+    </script>
+</body>
+</html>

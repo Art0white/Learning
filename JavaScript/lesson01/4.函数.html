@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /**
+         * (1)定义方法一：
+         * function abs (x) {
+         *     if (x>=0) {
+         *          return x;
+         *     }else{
+         *          return -x;
+         *     }
+         * }
+         * 一旦执行到return代表函数结束，返回结果！
+         * 如果没有执行return，函数执行完也会返回结果undefined
+         */
+        function abs1 (x) {
+            if (x>=0) {
+                return x;
+            }else{
+                return -x;
+            }
+        }
+        /**
+         * (2)定义方法二：
+         * var abs= function (x) {
+         *     if (x>=0) {
+         *          return x;
+         *     }else{
+         *          return -x;
+         *     }
+         * }
+         *
+         * function是一个匿名内部类(java如此叫)，但是可以把结果赋值给abs，通过abs就可以调用函数！
+         *
+         */
+        var abs2= function (x) {
+            if (x>=0) {
+                return x;
+            }else{
+                return -x;
+            }
+        }
+
+        /**
+         * 函数的调用
+         * > abs(10)
+         * < 10
+         * > abs(-10)
+         * < 10
+         *
+         * typeof x!=='number'  //判断x的类型是否为number
+         * throw 'Not a Number' //报错Not a Number,手动抛出异常
+         *
+         * 对js的函数还有输入任意数量的参数 不报错
+         * arguments代表传递进来的所有的参数，是一个数组
+         * 问题：arguments包含所有的参数，我们有时候想使用多余的参数来进行附加操作，需要排除已有参数
+         * 方法：rest     //ES6引入新特性，获取除了已经定义的参数之外的所有参数
+         * ...    //是java中的可变长函数
+         */
+        function aaa (a, b, ...rest) {   //...rest只能写到参数最后面
+            console.log("a=>"+a);
+            console.log("b=>"+b);
+            console.log(rest);
+        }
+
+        /**
+         * 4.2 变量的作用域
+         *      var(全局) let(局部) const(常数) 三种类型
+         *
+         *      全局作用域 var
+         *      (1) 在JavaScript中，var定义变量实际是有作用域的。
+         *          假设在函数体(函数内部)中声明，则在函数体外不可以使用。 (闭包 可实现)
+         *
+         *      (2) 全局对象window  //默认所以的全局变量都绑定到window下
+         *                          //window就代表浏览器
+         *
+         *      JavaScript实际上只有一个全局作用域，任何变量(函数也可以视为变量)，假设没有在函数作用范围内找到，就会向外查找。如果在全局作用域都没有找到，报错Refrence
+         *
+         *      问题：由于我们所有的全局变量都绑定到我们的window，如果不同的js文件，使用了相同的全局变量，冲突->如果能够减少冲突？
+         *      方法：唯一全局变量
+         *           //唯一全局变量
+         *           var LmxApp = {}；
+         *           //定义全局变量
+         *           LmxApp.add = function (a, b) {
+         *               return a+b;
+         *           }
+         *           把自己的代码全部放入到自己定义的唯一空间名字中，降低全局命名冲突的问题
+         *           jQuery就淦了这个   jQuery等价于${}
+         *
+         */
+
+        function bbb () {
+            for (var i = 0; i < 100; i++) {
+                console.log(i)
+            }
+            console.log(i+1);    //问题？ i出了这个作用域还可以使用
+        }
+
+        /**
+         * ES6关键字 let，解决局部作用域冲突问题！
+         */
+        function bbbchange () {
+            for (let i = 0; i < 100; i++) {
+                console.log(i)
+            }
+            console.log(i+1);    //这次就可以了
+        }
+
+        /**
+         * 在ES6之前，怎么定义常量：只有用全部大写字母命名的变量就是常量，建议不要修改这样的值？
+         */
+
+        //jQuery很重要！！！！！！
+
+    </script>
+
+    <script>
+        /**
+         * 方法
+         * 就是把函数放在对象的里面，对象只有两个东西: 属性和方法
+         */
+        function getAge () {
+            // 今年 - 出生的年
+            var now = new Date().getFullYear();
+            return now - this.bitrh;
+            //this.代表什么?拆开上面的代码看看
+            //使用这个方法对应的对象
+            //this是无法指定的，是默认指向调用它的那个对象的。
+
+        }
+
+        var Limx = {
+            name: '李沫璇',
+            bitrh: 2000,
+            //方法
+            age: getAge
+            // age: function () {
+            //     // 今年 - 出生的年
+            //     var now = new Date().getFullYear();
+            //     return now - this.bitrh;
+            //     //this.代表什么，
+            // }
+        }
+
+        //apply      在js中可以控制this的指向
+        getAge().apply(Limx,[]); //指向了Limx这个对象，参数为空
+        //apply是所有方法都有的属性，可以指定对象
+
+        console.log(Limx.name);
+        console.log(Limx.age());
+
+    </script>
+</body>
+</html>

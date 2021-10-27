@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        'use strict'
+        /**
+         * 6. 面向对象编程
+         * 6.1 什么是面向对象
+         *      JavaScript、java、c#、.........面向对象；JavaScript有些区别
+         *
+         *      类: 模块
+         *      对象: 具体的实例
+         *
+         *      在JavaScript这个需要大家换一下思维方式！
+         *      原型:相当于java的父类
+         *
+         *      继承方法一：面向对象原型继承
+         *      子类.__proto__ = 父类
+         *
+         */
+        var user = {
+            name: "auser",
+            age: 3,
+            run: function () {
+                console.log(this.name + "is running....");
+            }
+        };
+
+        var xm = {
+            name: "xiaoming"
+        };
+
+        xm.__proto__ = user;   //小明的原型是user,相当于继承，可以console.log(xm)看看
+
+        /**
+         * 继承方法二：面向对象class继承
+         * class关键字，是在ES6引入的
+         *
+         */
+        //老方法，看着不舒服的
+        function Student (name) {
+            this.name = name;
+        }
+        //给student新增一个方法
+        Student.prototype.hello = function () {
+            alert('Hello')
+        };
+
+        //ES6之后
+        class newStudent {              //class创建对象
+            constructor (name) {        //构造器constructor
+                this.name = name;
+            }
+
+            hello () {                  //方法
+                alert('hello')
+            }
+        }
+        class newXiaoStudent extends newStudent{   //和java很像(99.99%)的继承
+            constructor(name, grade) {
+                super(name);
+                this.grade = grade;
+            }
+            myGrade() {
+                alert("我是一名小学生");
+            }
+        }
+        var newxm = new newStudent("小明");   //像java一样创建对象
+        var newxh = new newXiaoStudent("小红", 1);  //创建一个小学生小红
+
+        //本质查看对象原型
+
+
+    </script>
+</body>
+</html>

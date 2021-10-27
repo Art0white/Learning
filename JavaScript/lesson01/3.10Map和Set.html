@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        //ES6新东西哦！！！Map
+
+        //Map:类似于java的Map
+        //学生的成绩，学生的名字
+        var names = ["tom", "jack", "haha"];
+        var scores = [100, 90, 80];
+
+        var map = new Map([['tom',100], ['jack',90], ['haha',80]]);
+        var name = map.get('tom');
+        map.set('admin',123456);
+        map.delete('admin');
+        console.log(name);
+
+        //还有一个Set: 无序不重复的集合
+        var set = new Set([1,5,4,5,5]);   //返回 Set(3){1, 5, 4}，可以去重，java1.6出
+        set.add (2);
+        set.delete(2);
+    </script>
+</body>
+</html>
