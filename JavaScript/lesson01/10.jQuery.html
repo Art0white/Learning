@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+
+    <script>
+        /**
+         * 10. jQuery
+         * 10.1 初始jQuery及公式
+         * JavaScript
+         * jQuery: jQuery库, 里面存在大量的JavaScript函数
+         *
+         * 记住一个公式！！！！！:   $(selector).action()
+         *                              选择器    事件
+         *
+         *
+         * 10.2 选择器
+         * jQuery中文文档: https://jquery.cuishifeng.cn/
+         *
+         * 10.3 事件
+         *
+         * 10.4 操作DOM元素
+         *
+         *
+         */
+    </script>
+</head>
+
+<body>
+    <!-- 10.1 -->
+    <a href="" id="test-jquery">点我</a>
+    <script>
+        // document.getElementById('test-jquery');  原生js获取DOM节点的方法
+
+        //选择器就是css的选择器
+        $('#test-jquery').click(function () {
+            alert('123');
+        });
+    </script>
+
+    <!-- 10.2 -->
+    <script>
+        //原生js，选择器少，麻烦不好记
+        //标识
+        document.getElementsByTagName();
+        //id
+        document.getElementById();
+        //类
+        document.getElementsByClassName();
+
+        //对比
+
+        //jQuery    css中的选择器它全部都有
+        $('p').click();         //标签选择器
+        $('#id1').click();      //id选择器
+        $('.class1').click();   //class选择器
+    </script>
+
+    <!-- 10.3 -->
+    <!-- 10.4 -->
+    <ul id="test-ul">
+        <li class="js">JavaScript</li>
+        <li name="python">Python</li>
+    </ul>
+
+    <script>
+        //(1)节点文本操作
+
+        // document.getElementById('');
+        $('#test-ul li[name=python]').text(); //有参数在text()里面写，没有就没有
+        //$('#test-ul li[name=python]').text();                   获得值
+        //$('#test-ul li[name=python]').text('设置值');           设置值
+        $('#test-ul').html();
+        //$('#test-ul').html();                                   获得值
+        //$('#test-ul').html('<strong>123</>strong>设置值');      设置值
+
+        //(2)css的操作
+        $('#test-ul li[name=python]').css({"color":"red"});
+
+        //(3)元素的显示和隐藏: 本质 display: none;
+        $('#test-ul li[name=python]').show();
+        $('#test-ul li[name=python]').hide();
+
+        //(4)娱乐测试
+        $(window).width();
+        $(window).height();
+        $('#test-ul li[name=python]').toggle();
+
+        //(5)未来的ajax()
+        $('#from').ajax();
+        $.ajax({ url: "test.html", context: document.body, success: function () {
+                $(this).addClass("done");
+            }});                         //请求成功了
+    </script>
+
+</body>
+</html>

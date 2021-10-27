@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         * DOM: 文档对象模型
+         * 核心
+         * 浏览器网页就是一个DOM树形结构！
+         *     - 更新: 更新DOM节点
+         *     - 遍历: 得到DOM节点
+         *     - 删除: 删除DOM节点
+         *     - 添加: 添加DOM节点
+         * 8.1 要操作一个DOM节点，就必须要获得这个DOM节点
+         *
+         * 8.2 更新DOM节点
+         *
+         * 8.3 删除DOM节点
+         * 删除节点的步骤：
+         *     先获取父节点          父亲 = 自己.parentElement
+         *     再通过父节点删除自己  父亲.removeChild(自己)
+         *
+         * 8.4 插入节点
+         * 我们获得了某个DOM节点，假设这个DOM节点是空的，我们通过innerHTML就可以增加一个元素了
+         * 但是，这个DOM节点已经存在元素，我们就不能这么干了，会产生覆盖
+         *
+         * 追加 append
+         *
+         */
+    </script>
+</head>
+<body>
+<!-- 获取标签-->
+    <div id="father">
+        <h1>标题一</h1>
+        <p id="p1">p1</p>
+        <p class="p2">p2</p>
+    </div>
+
+    <script>
+        //对应css选择器
+        var test1 = document.getElementsByTagName('h1');     //通过标签名
+        var test2 = document.getElementById('p1');             //通过id
+        var test3 = document.getElementsByClassName('p2');     //通过class名
+        var father = document.getElementById('father');
+
+        var childrens = father.children;
+        //father.firstChild
+        //father.lastChild
+        console.log(childrens);
+
+        //这些都是原生代码，之后用jQuery
+    </script>
+<!--END-->
+
+<!--更新DOM节点-->
+    <div>
+        <div id="id1">
+
+        </div>
+        <div id="id2">
+
+        </div>
+    </div>
+    <script>
+        var id1 = document.getElementById('id1');
+        id1.innerText = 'abc';
+        id1.innerHTML = '<strong>123</strong>';   //加粗的123文本
+        //操作DOM节点
+        id2.innerText = 'bdad';
+        id2.style.color = 'yellow';
+        id2.style.fontSize = '20px';  //css里的下滑线驼峰命名
+        id2.style.padding = '2em';
+    </script>
+<!--END-->
+
+<!--删除DOM节点-->
+<!--用上面创建的father来测试-->
+    <script>
+        var nfather = test2.parentElement;
+        nfather.removeChild(test2);
+
+        /**
+         * 这样删除不可行
+         * 因为删除是个动态的过程
+         * 删除了第一个，后面的会移动
+         * father.removeChild(father.children[0]);
+         * father.removeChild(father.children[1]);
+         * father.removeChild(father.children[2]);
+         *
+         * 解决方法：倒着删除
+         */
+
+    </script>
+<!--END-->
+
+<!--创建和插入DOM节点-->
+    <!--方法一: 移动，将js移动到list里面-->
+    <p id="js">JavaScript</p>
+    <div id="list">
+        <p id="se">JavaSE</p>
+        <p id="ee">JavaEE</p>
+        <p id="me">JavaME</p>
+    </div>
+    <script>
+        var js = document.getElementById('js');
+        var list = document.getElementById('list');
+        list.appendChild(js);
+    </script>
+    <!--方法二: 创建，-->
+    <script>
+        <!--接着上面-->
+        var newP = document.createElement('p');
+        newP.id = 'newP';
+        newP.innerText = 'Hello,LMX';
+        list.appendChild(newP);
+
+
+
+        //重点！！！！创建一个标签节点 (通过这个属性可以设置任意的值)
+        var myScript = document.createElement('script');
+        myScript.setAttribute('type','text/javascript');  //将type属性设置为text/javascript
+
+
+    </script>
+
+<!--END-->
+</body>
+</html>

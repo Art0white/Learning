@@ -33,6 +33,40 @@
          *
          *      (2)Navigator
          *      Navigator 封装了 浏览器的信息
+         *      navigator.appName
+         *      navigator.appVersion
+         *      navigator.userAgent
+         *      navigator.platform
+         *      大多数时候，我们不会使用 navigator对象 ，因为会被人人为修改！
+         *      不建议使用这些属性来判断和编写代码
+         *
+         *      (3)screen
+         *      screen 代表 屏幕
+         *      screen.width
+         *      screen.height
+         *
+         *      (4)location (重要)
+         *      location代表当前页面的URL信息
+         *      location.reload()      //刷新网页
+         *      location.assign(链接)  //当别人访问还有这句代码的网址时，跳转到参数对应的链接
+         *
+         *      (5)document (文本内容)
+         *      document代表当前的页面，HTML DOM文档数
+         *      document.title="网页标题名"
+         *      var bq = document.getElementById('某标签的id')
+         *      获取具体的文档数节点 --> 动态
+         *      document.cookie     //获取cookie
+         *      劫持cookie原理(每天一个入狱小技巧)
+         *          <script src="aa.js">    </>script>
+         *          aa.js里面加一句document.cookie，再通过ajax传到自己的服务器
+         *      服务器端可以设置 cookie: httpOnly
+         *
+         *      (6)history (不建议使用)
+         *      history.back()      //后退
+         *      history.forward()   //前进
+         *
+         *
+         *
          *
          */
     </script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <style>
+        #divMove {
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    mouse : <span id="mouseMove"></span>
+
+    <div id="divMove">
+        在这里移动鼠标试试
+    </div>
+
+    <script>
+        //当网页元素加载完毕之后，响应事件
+        // $(document).ready(function () {
+        //
+        // });
+        //↓↓↓↓↓简写↓↓↓↓↓
+        $(function () {
+            $('#divMove').mousemove(function (e) {  //拿到坐标了
+                $('#mouseMove').text('x:'+e.pageX + 'y:' + e.pageY);
+            });
+        });
+    </script>
+</body>
+</html>

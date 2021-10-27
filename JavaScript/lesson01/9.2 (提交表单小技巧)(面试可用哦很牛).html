@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--MD5的工具类-->
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+</head>
+    <body>
+        <!--
+        表单绑定提交事件   用onsubmit = 绑定一个提交检测的函数 获取true false
+        将这个结果返回给表单，使用onsubmit接收
+        -->
+        <form action="https://www.baidu.com" method="post" onsubmit="return login()">
+            <p>
+                <span>用户名: </span> <input type="text" id="username" name="username" required>
+            </p>
+
+            <p>
+                <span>密码: </span> <input type="password" id="input-password" required>
+            </p>
+            <input type="hidden" id="md5-password" name="password">
+
+            <!--提交-->
+            <!--    <input type="submit">    -->
+            <button type="submit">提交</button><!--onclick="login()"事件由form提交表单触发-->
+        </form>
+
+        <!-- 9.2 -->
+        <script>
+            function login () {
+                var username = document.getElementById('username');
+                var password = document.getElementById('input-password');
+                var md5password = document.getElementById('md5-password');
+
+                md5password.value = md5(password.value);
+                //true和false可以判断是否提交
+                //这里正常要加if判断，给出true或false
+                return true;
+            }
+        </script>
+    </body>
+</html>
